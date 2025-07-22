@@ -1,0 +1,19 @@
+<!-- src/app/pages/admin-dashboard/admin-dashboard.html -->
+<section id="admin-dashboard" class="bg-white shadow-lg rounded-xl p-4 sm:p-6">
+  <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Admin Dashboard</h2>
+  <div class="text-center mb-6 flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+    <!-- Buttons to switch between student and teacher management sections -->
+    <button (click)="showAdminSubSection('students')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm sm:text-base">Manage Students</button>
+    <button (click)="showAdminSubSection('teachers')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm sm:text-base">Manage Teachers</button>
+  </div>
+
+  <!-- Render ManageStudentsComponent if adminSubSection is 'students' -->
+  <div *ngIf="adminSubSection === 'students'">
+    <app-manage-students></app-manage-students>
+  </div>
+
+  <!-- Render ManageTeachersComponent if adminSubSection is 'teachers' -->
+  <div *ngIf="adminSubSection === 'teachers'">
+    <app-manage-teachers></app-manage-teachers>
+  </div>
+</section>

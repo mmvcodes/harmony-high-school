@@ -1,0 +1,73 @@
+<!-- src/app/pages/contact/contact.html -->
+<section id="contact-section" class="bg-white shadow-lg rounded-xl p-4 sm:p-6">
+  <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Contact Us</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Contact Information Section -->
+    <div>
+      <h3 class="text-xl sm:text-2xl font-semibold text-gray-700 mb-4">Our Details</h3>
+      <p class="text-base text-gray-700 mb-2">
+        <span class="font-medium">School Name:</span> {{ schoolName }}
+      </p>
+      <p class="text-base text-gray-700 mb-2">
+        <span class="font-medium">Address:</span> {{ address }}
+      </p>
+      <p class="text-base text-gray-700 mb-2">
+        <span class="font-medium">Phone:</span> <a href="tel:{{ phone }}" class="text-blue-600 hover:underline">{{ phone }}</a>
+      </p>
+      <p class="text-base text-gray-700 mb-4">
+        <span class="font-medium">Email:</span> <a href="mailto:{{ email }}" class="text-blue-600 hover:underline">{{ email }}</a>
+      </p>
+
+      <h3 class="text-xl sm:text-2xl font-semibold text-gray-700 mb-4 mt-6">Find Us on the Map</h3>
+      <div class="map-container rounded-md overflow-hidden shadow-md">
+        <!-- Embedded Google Map for Bangalore -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.93427490691!2d77.59296175!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167905d43615%3A0x46421526487e47a9!2sBengaluru%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sus!4v1678912345678!5m2!1sen!2sus"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map of Bengaluru, Karnataka, India"
+        ></iframe>
+      </div>
+      <p class="text-sm text-gray-500 mt-2 text-center">
+        Our location in Bengaluru, Karnataka, India.
+      </p>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div>
+      <h3 class="text-xl sm:text-2xl font-semibold text-gray-700 mb-4">Send Us a Message</h3>
+      <form (ngSubmit)="submitContactForm()" class="space-y-4">
+        <div>
+          <label for="contact-name" class="block text-gray-700 text-sm font-bold mb-1">Your Name:</label>
+          <input type="text" id="contact-name" [(ngModel)]="contactForm.name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" placeholder="John Doe" required>
+        </div>
+        <div>
+          <label for="contact-email" class="block text-gray-700 text-sm font-bold mb-1">Your Email:</label>
+          <input type="email" id="contact-email" [(ngModel)]="contactForm.email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" placeholder="john.doe@example.com" required>
+        </div>
+        <div>
+          <label for="contact-subject" class="block text-gray-700 text-sm font-bold mb-1">Subject:</label>
+          <input type="text" id="contact-subject" [(ngModel)]="contactForm.subject" name="subject" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" placeholder="Inquiry about admissions" required>
+        </div>
+        <div>
+          <label for="contact-message" class="block text-gray-700 text-sm font-bold mb-1">Your Message:</label>
+          <textarea id="contact-message" [(ngModel)]="contactForm.message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm" placeholder="Type your message here..." required></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-sm sm:text-base">
+            Send Message
+          </button>
+        </div>
+        <!-- Display form submission message -->
+        <div *ngIf="formMessage" class="mt-4 text-center text-sm sm:text-base" [ngClass]="{'text-green-500': formMessageSuccess, 'text-red-500': !formMessageSuccess}">
+          {{ formMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
